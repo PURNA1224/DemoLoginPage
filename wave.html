@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            background-color: steelblue;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+            margin: 0;
+        }
+        .container{
+            background-color: rgb(0, 0, 0, 0.3);
+            /* width: 350px;
+            height: 400px; */
+            /* transform: translate(50%,50%); */
+            padding: 20px 40px;
+            border-radius: 5px;
+        }
+        h1 {
+            text-align: center;
+            color: white;
+        }
+        .form-control {
+            position: relative;
+            margin: 20px 0 40px;
+            width: 300px;
+        }
+        .form-control input {
+            display: block;
+            width: 100%;
+            border: 0px;
+            border-bottom: 2px white solid;
+            background-color: transparent;
+            padding: 15px 0;
+            font-size: 18px;
+            color: white;
+        }
+        .form-control label {
+            position: absolute;
+            top: 15px;
+            left: 0;
+        }
+
+        .form-control input:focus, .form-control input:valid {
+            outline: 0;
+            border-bottom-color: lightblue;
+            
+        }
+
+        .form-control label span {
+            display: inline-block;
+            font-size: 18px;
+            min-width: 5px;
+            transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .form-control input:focus + label span{
+            color: lightblue;
+            transform: translateY(-30px);
+        }
+        .btn {
+            cursor: pointer;
+            display: inline-block;
+            padding: 15px;
+            width: 100%;
+            font-size: 16px;
+            background-color: skyblue;
+            border: 0;
+            border-radius: 5px;
+            margin: 7px 0px;
+        }
+        /* .btn:focus {
+            outline: 0;
+        } */
+        .btn:active{
+            transform: scale(0.98);
+        }
+        .text {
+            margin-top: 30px;
+            display: inline-block;
+        }
+        a {
+            text-decoration: none;
+            color: skyblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Please Login</h1>
+        <form>
+            <div class="form-control">
+                <input  type="text" required>
+                <label>Email</label>
+            </div>
+            <div class="form-control">
+                <input  type="password" required>
+                <label>Password</label>
+            </div>
+            <button class="btn">Login</button>
+            <p class="text">Don't have an account?</p><a href="#">Register</a>
+        </form>
+    </div>
+    <script>
+        const labels = document.querySelectorAll('.form-control label');
+
+        labels.forEach(label => {
+            label.innerHTML = label.innerText
+            .split('')
+            .map((letter, ind) => `<span style="transition-delay:${ind*50}ms">${letter}</span>`)
+            .join('')
+        });
+    </script>
+</body>
+</html>
